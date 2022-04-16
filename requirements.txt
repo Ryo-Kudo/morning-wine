@@ -1,2 +1,9 @@
+click
 flask
 flask-sqlalchemy
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+SQLALchemy
+Werkzeug
