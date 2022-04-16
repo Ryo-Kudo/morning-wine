@@ -1,39 +1,33 @@
 from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy  # add
-from datetime import datetime  # add
+from flask_sqlalchemy import SQLAlchemy  
+from datetime import datetime
+from werkzeug.utils import secure_filename
+import numpy as np
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'  # add
-db = SQLAlchemy(app)  # add
 
-
-# add
-class Grocery(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Grocery %r>' % self.name
+# ランダムにファイル名を得るメソッド
+def picked_up():
+    file_names = [
+        "images/sample_00001.png",
+        "images/sample_00002.png",
+        "images/sample_00003.png",
+        "images/sample_00004.png",
+        "images/sample_00005.png",
+        "images/sample_00006.png",
+        "images/sample_00007.png",
+        "images/sample_00008.png",
+        "images/sample_00009.png",
+        "images/sample_00010.png",
+        "images/sample_00011.png"
+    ]
+    # NumPy の random.choice で配列からランダムに取り出し
+    return np.random.choice(file_names)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        name = request.form['name']
-        new_stuff = Grocery(name=name)
-
-        try:
-            db.session.add(new_stuff)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "There was a problem adding new stuff."
-
-    else:
-        groceries = Grocery.query.order_by(Grocery.created_at).all()
-        return render_template('index.html', groceries=groceries)
+    return render_template('index.html', sample_name=picked_up())
 
 if __name__ == '__main__':
     app.run(debug=True)
