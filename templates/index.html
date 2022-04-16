@@ -63,10 +63,9 @@
 
 <!-- メインコンテナ -->
 <div class="container">
-
     <div class="px-4 py-5 my-5 text-center" style="background-color:#ffffff;">
         <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/logo_sample.jpg') }}" alt="アイコン" width="300" height="300">
-        <h1 class="display-5 fw-bold">Sample Service Name</h1>
+        <h1 class="display-5 fw-bold">DAIZ</h1>
         <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">必要であれば、ここにトップメッセージを書くことができます。<br>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -101,8 +100,9 @@
 
 
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col"></div>
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header py-3">
               <h4 class="my-0 fw-normal">Register<br><small class="text-muted fw-light">Follow the steps below to add yourself to this list.</small></h4>
             </div>
@@ -113,8 +113,10 @@
               </ul>
               <button type="button" class="w-100 btn btn-lg btn-outline-primary">Click To Register →</button>
             </div>
-          </div>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
+    <hr class="featurette-divider">
 
 {% endblock content %}
